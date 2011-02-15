@@ -1,0 +1,305 @@
+#!/bin/bash
+
+export dir_mla=`cat $HOME/.mladirs.conf | grep "mla=" | awk 'BEGIN {FS="="} {print $2}' `
+export dir_reportes=`cat $dir_mla/mladirs.conf | grep "reportes=" | awk 'BEGIN {FS="="} {print $2}' `
+export dir_datos=`cat $dir_mla/mladirs.conf | grep "datos=" | awk 'BEGIN {FS="="} {print $2}' `
+obten_num_mes ()
+{
+	case $1 in
+	Jan )
+		nummes=1
+		;;
+	Feb )
+		nummes=2
+		;;
+	Mar )
+		nummes=3
+		;;
+	Apr )
+		nummes=4
+		;;
+	May )
+		nummes=5
+		;;
+	Jun )
+		nummes=6
+		;;
+	Jul )
+		nummes=7
+		;;
+	Aug )
+		nummes=8
+		;;
+	Sep )
+		nummes=9
+		;;
+	Oct )
+		nummes=10
+		;;
+	Nov )
+		nummes=11
+		;;
+	Dec )
+		nummes=12
+		;;
+	esac
+	export nummesfun=$nummes
+}
+obtener_final ()
+{
+	mesfin=`tail -1 $dir_datos/datos.txt | awk 'BEGIN{FS="|"} {print $1}' | awk '{print $1}'`
+	diafin=`tail -1 $dir_datos/datos.txt | awk 'BEGIN{FS="|"} {print $1}' | awk '{print $2}'`
+	obten_num_mes $mesfin
+	export mes_final_arch=$nummesfun
+	export dia_final_arch=$diafin
+}
+
+obtener_inicio ()
+{
+	 mesini=`head -1 $dir_datos/datos.txt | awk 'BEGIN{FS="|"} {print $1}' | awk '{print $1}'`
+         diaini=`head -1 $dir_datos/datos.txt | awk 'BEGIN{FS="|"} {print $1}' | awk '{print $2}'`
+	 obten_num_mes $mesini
+	 export mes_inicio_arch=$nummesfun
+         export dia_inicio_arch=$diaini
+}
+
+verifica_fecha ()
+{
+	mes=`echo "$1" | awk 'BEGIN{FS="/"} {print $1}'`
+	dia=`echo "$1" | awk 'BEGIN{FS="/"} {print $2}'`
+	if [ $mes -ge 1 ] && [ $mes -le 12 ] && [ $dia -ge 1 ] && [ $dia -le 31 ]; then
+		case $mes in
+			1 ) 
+				mes_nom="Jan"
+				;;
+			01)
+				mes_nom="Jan"
+				;;
+			2 )
+                                mes_nom="Feb"
+                                ;;
+			02 )
+				mes_nom="Feb"
+				;;
+			3 )
+				mes_nom="Mar"
+	                        ;;
+			03 )
+				mes_nom="Mar"
+				;;
+			4 )
+				mes_nom="Apr"
+	                        ;;
+			04 )
+				mes_nom="Apr"
+				;;
+			5 )
+				mes_nom="May"
+                               	;;
+			05 )
+				mes_nom="May"
+				;;
+			6 )
+				mes_nom="Jun"
+	                        ;;
+			06 )
+				mes_nom="Jun"
+				;;
+			7 )
+				mes_nom="Jul"
+	                        ;;
+			07 )
+				mes_nom="Jul"
+				;;
+			8 )
+				mes_nom="Aug"
+	                        ;;
+			08 )
+				mes_nom="Aug"
+				;;
+			9 )
+				mes_nom="Sep"
+				;;
+			09 )
+				mes_nom="Sep"
+				;;
+			10 )
+				mes_nom="Oct"
+				;;
+			11 )
+				mes_nom="Nov"
+				;;
+			12 )
+				mes_nom="Dec"
+				;;
+		esac
+		export mes_ok=$mes_nom
+		export mes_num=$mes
+		export dia_ok=$dia
+	else
+		echo " " 
+		echo " "
+		echo "Formato de fecha NO VALIDO"
+		exit
+	fi
+}
+case $1 in
+	-p )
+		echo "******************************************************"
+		echo "**  MAIL LOG ANALIZER - Procesamiento de bitacoras  **"
+		echo "******************************************************"
+		echo " "
+		csh $dir_mla/inicia $dir_mla 1
+		;;
+	-r ) 
+		echo "**************************************************"
+		echo "**  MAIL LOG ANALIZER - Generacion de Reportes  **" 
+		echo "**************************************************"
+		echo " "
+		case $2 in
+			-fi )
+				verifica_fecha $3
+				fecha_inicio="$mes_ok:$dia_ok"
+				mes_ok_inicio=$mes_num
+				dia_ok_inicio=$dia_ok
+				echo "Fecha Inicio: $fecha_inicio"
+				case $4 in
+					-ff )
+		                                verifica_fecha $5
+		                                mes_ok_final=$mes_num
+						dia_ok_final=$dia_ok
+						fecha_final="$mes_ok:$dia_ok"
+                                                echo "Fecha Final: $fecha_final"
+						if [ $mes_ok_final -lt $mes_ok_inicio ]; then
+							echo "ERROR: Fecha Final anterior que Fecha de Inicio"			
+						elif [ $mes_ok_final -eq $mes_ok_inicio ] && [ $dia_ok_final -lt $dia_ok_inicio ]; then
+							echo "ERROR: Fecha Final anterior que Fecha de Inicio"
+						else
+							case $6 in
+								-o )
+									if [ -z "$7" ]; then
+										echo "ERROR: [ $6 ] Falta Argumento"
+									else
+										echo "Archivo de salida: $7"
+										sh $dir_mla/reportes_inicia $dir_mla $mes_ok_inicio $dia_ok_inicio $mes_ok_final $dia_ok_final $7
+									fi
+									;;
+								* )
+									if [ -z "$6" ]; then
+										echo "Archivo de Salida no definido. Se toma Reporte.dat"
+										sh $dir_mla/reportes_inicia $dir_mla $mes_ok_inicio $dia_ok_inicio $mes_ok_final $dia_ok_final Reporte.dat
+									else
+										echo "ERROR: Argumentos excesivos"
+									fi
+									;;
+							esac
+						fi
+						;;
+					-o )
+						echo "Fecha Final no definida. Se toma final del archivo"
+						echo "Archivo de salida: $5"
+						obtener_final
+						sh $dir_mla/reportes_inicia $dir_mla $mes_ok_inicio $dia_ok_inicio $mes_final_arch $dia_final_arch $5
+						;;
+					* )
+						if [ -z "$4" ]; then
+							echo "Fecha Final no definida. Se toma final del archivo"
+							echo "Archivo de Salida no definido. Se toma Reporte.dat"
+							obtener_final
+							sh $dir_mla/reportes_inicia $dir_mla $mes_ok_inicio $dia_ok_inicio $mes_final_arch $dia_final_arch Reporte.dat
+						else
+							echo "ERROR: [ $4 ] Argumento Invalido"
+						fi
+						;;
+				esac
+				;;
+			-ff )
+                                verifica_fecha $3
+				mes_ok_final=$mes_num
+				dia_ok_final=$dia_ok
+                                fecha_final="$mes_ok:$dia_ok"
+                                echo "Fecha Final: $fecha_final"
+                                case $4 in
+					-fi )
+						verifica_fecha $5
+						fecha_inicio="$mes_ok:$dia_ok"
+						echo "Fecha Inicio: $fecha_inicio"
+						mes_ok_inicio=$mes_num
+						dia_ok_inicio=$dia_ok
+						if [ $mes_ok_final -lt $mes_ok_inicio ]; then
+		                                        echo "ERROR: Fecha Final anterior que Fecha de Inicio"
+						elif [ $mes_ok_final -eq $mes_ok_inicio ] && [ $dia_ok_final -lt $dia_ok_inicio ]; then
+                                                        echo "ERROR: Fecha Final anterior que Fecha de Inicio"
+						else
+							case $6 in
+								-o )
+									if [ -z "$7" ]; then
+										echo "ERROR: [ $6 ] Falta argumento"
+									else
+										echo "Archivo de salida: $7"
+										sh $dir_mla/reportes_inicia $dir_mla $mes_ok_inicio $dia_ok_inicio $mes_ok_final $dia_ok_final $7
+									fi
+									;;
+								* )
+									if [ -z "$6" ]; then
+										echo "Archivo de Salida no definido. Se toma Reporte.dat"
+										sh $dir_mla/reportes_inicia $dir_mla $mes_ok_inicio $dia_ok_inicio $mes_ok_final $dia_ok_final Reporte.dat
+									else
+										echo "ERROR: Argumentos excesivos"
+									fi
+									;;
+							esac
+						fi
+						;;
+					-o )
+		                                echo "Fecha Inicio no definida, Se toma Principio del archivo"
+						echo "Archivo de salida: $5"
+						obtener_inicio
+	                                        sh $dir_mla/reportes_inicia $dir_mla $mes_inicio_arch $dia_inicio_arch $mes_ok_final $dia_ok_final $5
+						;;
+		                        * )
+						if [ -z "$4" ]; then
+							echo "Fecha Inicio no definida, Se toma Principio del archivo"
+							echo "Archivo de Salida no definido. Se toma Reporte.dat"
+							obtener_inicio
+							sh $dir_mla/reportes_inicia $dir_mla $mes_inicio_arch $dia_inicio_arch $mes_ok_final $dia_ok_final Reporte.dat
+						else
+							echo "ERROR: [ $4 ] Argumento Invalido"
+						fi
+						;;
+				esac				
+				;;
+			-o )
+				echo "No se especificaron limites de fechas. Se toma todo el Archivo de datos"
+				if [ -z "$3" ]; then
+					echo "ERROR: [ $2 ] Falta Argumento"
+				else
+					echo "Archivo de salida: $3"
+					sh $dir_mla/reportes_mla $dir_mla $dir_datos/datos.txt $dir_reportes/$3 INICIO-ARCHIVO FIN-ARCHIVO
+				fi
+				;;
+			* )
+				if [ -z "$2" ]; then
+					echo "Reporte General de Archivo de Datos ... OK"
+					echo "Archivo de Salida : Reporte.dat"
+					sh $dir_mla/reportes_mla $dir_mla $dir_datos/datos.txt $dir_reportes/Reporte.dat INICIO-ARCHIVO FIN-ARCHIVO
+				else
+					echo "ERROR: [ -r ] Argumento invalido"
+				fi
+				;;
+		esac
+		;;
+	* )
+		echo "OPCION NO VALIDA"
+		echo " "
+		echo "*************************************************************"
+		echo " Las opciones disponibles para Mail Log Analizer  (MLA) son: "
+		echo " -p : Procesamiento de Bitacoras"
+		echo " -r : Reporte personalizado"
+		echo "		[-fi mm/dd ] : Fecha de inicio de Reporte ( Sin [-o]: Archivo de salida Reporte.dat )"
+		echo "		[-ff mm/dd ] : Fecha de termino de Reporte ( Sin [-o]: Archivo de salida Reporte.dat )"
+		echo "		[ -o ]       : Archivo de Salida para Reporte"
+		echo " "
+		echo " Ejemplo: './load -r -fi 07/01 -ff 07/03 -o ReporteJulio.dat"
+		;;
+esac

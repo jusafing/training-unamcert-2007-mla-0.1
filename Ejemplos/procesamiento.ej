@@ -1,0 +1,254 @@
+A continuacion se mostrara una salida de ejemplo para una ejecucion del procesamiento
+de biracoras de la Herramienta MLA para los tres archivos proporcionados:
+ - mail.log.1
+ - mail.log.2
+ - mail.log.3
+
+
+
+
+ $ ./load -p
+
+******************************************************
+**  MAIL LOG ANALIZER - Procesamiento de bitacoras  **
+******************************************************
+
+Iniciando el proceso .....
+Iniciando el Ordenamiento de bitacoras .....
+Ejecutando logs_ordena.csh .....
+
+Creando bitacoras de archivo /home/javier/mla/logs/mail.log.7
+Creando bitacoras para Hora 0 /home/javier/mla/tmp/logs/hora0.tmp ..... OK
+Creando bitacoras para Hora 1 /home/javier/mla/tmp/logs/hora1.tmp ..... OK
+Creando bitacoras para Hora 2 /home/javier/mla/tmp/logs/hora2.tmp ..... OK
+Creando bitacoras para Hora 3 /home/javier/mla/tmp/logs/hora3.tmp ..... OK
+Creando bitacoras para Hora 4 /home/javier/mla/tmp/logs/hora4.tmp ..... OK
+Creando bitacoras para Hora 5 /home/javier/mla/tmp/logs/hora5.tmp ..... OK
+Creando bitacoras para Hora 6 /home/javier/mla/tmp/logs/hora6.tmp ..... OK
+Creando bitacoras para Hora 7 /home/javier/mla/tmp/logs/hora7.tmp ..... OK
+Creando bitacoras para Hora 8 /home/javier/mla/tmp/logs/hora8.tmp ..... OK
+Creando bitacoras para Hora 9 /home/javier/mla/tmp/logs/hora9.tmp ..... OK
+Creando bitacoras para Hora 10 /home/javier/mla/tmp/logs/hora10.tmp ..... OK
+Creando bitacoras para Hora 11 /home/javier/mla/tmp/logs/hora11.tmp ..... OK
+Creando bitacoras para Hora 12 /home/javier/mla/tmp/logs/hora12.tmp ..... OK
+Creando bitacoras para Hora 13 /home/javier/mla/tmp/logs/hora13.tmp ..... OK
+Creando bitacoras para Hora 14 /home/javier/mla/tmp/logs/hora14.tmp ..... OK
+Creando bitacoras para Hora 15 /home/javier/mla/tmp/logs/hora15.tmp ..... OK
+Creando bitacoras para Hora 16 /home/javier/mla/tmp/logs/hora16.tmp ..... OK
+Creando bitacoras para Hora 17 /home/javier/mla/tmp/logs/hora17.tmp ..... OK
+Creando bitacoras para Hora 18 /home/javier/mla/tmp/logs/hora18.tmp ..... OK
+Creando bitacoras para Hora 19 /home/javier/mla/tmp/logs/hora19.tmp ..... OK
+Creando bitacoras para Hora 20 /home/javier/mla/tmp/logs/hora20.tmp ..... OK
+Creando bitacoras para Hora 21 /home/javier/mla/tmp/logs/hora21.tmp ..... OK
+Creando bitacoras para Hora 22 /home/javier/mla/tmp/logs/hora22.tmp ..... OK
+Creando bitacoras para Hora 23 /home/javier/mla/tmp/logs/hora23.tmp ..... OK
+
+Creando bitacoras de archivo /home/javier/mla/logs/mail.log.6
+Creando bitacoras para Hora 0 /home/javier/mla/tmp/logs/hora0.tmp ..... OK
+Creando bitacoras para Hora 1 /home/javier/mla/tmp/logs/hora1.tmp ..... OK
+Creando bitacoras para Hora 2 /home/javier/mla/tmp/logs/hora2.tmp ..... OK
+Creando bitacoras para Hora 3 /home/javier/mla/tmp/logs/hora3.tmp ..... OK
+Creando bitacoras para Hora 4 /home/javier/mla/tmp/logs/hora4.tmp ..... OK
+Creando bitacoras para Hora 5 /home/javier/mla/tmp/logs/hora5.tmp ..... OK
+Creando bitacoras para Hora 6 /home/javier/mla/tmp/logs/hora6.tmp ..... OK
+Creando bitacoras para Hora 7 /home/javier/mla/tmp/logs/hora7.tmp ..... OK
+Creando bitacoras para Hora 8 /home/javier/mla/tmp/logs/hora8.tmp ..... OK
+Creando bitacoras para Hora 9 /home/javier/mla/tmp/logs/hora9.tmp ..... OK
+Creando bitacoras para Hora 10 /home/javier/mla/tmp/logs/hora10.tmp ..... OK
+Creando bitacoras para Hora 11 /home/javier/mla/tmp/logs/hora11.tmp ..... OK
+Creando bitacoras para Hora 12 /home/javier/mla/tmp/logs/hora12.tmp ..... OK
+Creando bitacoras para Hora 13 /home/javier/mla/tmp/logs/hora13.tmp ..... OK
+Creando bitacoras para Hora 14 /home/javier/mla/tmp/logs/hora14.tmp ..... OK
+Creando bitacoras para Hora 15 /home/javier/mla/tmp/logs/hora15.tmp ..... OK
+Creando bitacoras para Hora 16 /home/javier/mla/tmp/logs/hora16.tmp ..... OK
+Creando bitacoras para Hora 17 /home/javier/mla/tmp/logs/hora17.tmp ..... OK
+Creando bitacoras para Hora 18 /home/javier/mla/tmp/logs/hora18.tmp ..... OK
+Creando bitacoras para Hora 19 /home/javier/mla/tmp/logs/hora19.tmp ..... OK
+Creando bitacoras para Hora 20 /home/javier/mla/tmp/logs/hora20.tmp ..... OK
+Creando bitacoras para Hora 21 /home/javier/mla/tmp/logs/hora21.tmp ..... OK
+Creando bitacoras para Hora 22 /home/javier/mla/tmp/logs/hora22.tmp ..... OK
+Creando bitacoras para Hora 23 /home/javier/mla/tmp/logs/hora23.tmp ..... OK
+
+Creando bitacoras de archivo /home/javier/mla/logs/mail.log.5
+Creando bitacoras para Hora 0 /home/javier/mla/tmp/logs/hora0.tmp ..... OK
+Creando bitacoras para Hora 1 /home/javier/mla/tmp/logs/hora1.tmp ..... OK
+Creando bitacoras para Hora 2 /home/javier/mla/tmp/logs/hora2.tmp ..... OK
+Creando bitacoras para Hora 3 /home/javier/mla/tmp/logs/hora3.tmp ..... OK
+Creando bitacoras para Hora 4 /home/javier/mla/tmp/logs/hora4.tmp ..... OK
+Creando bitacoras para Hora 5 /home/javier/mla/tmp/logs/hora5.tmp ..... OK
+Creando bitacoras para Hora 6 /home/javier/mla/tmp/logs/hora6.tmp ..... OK
+Creando bitacoras para Hora 7 /home/javier/mla/tmp/logs/hora7.tmp ..... OK
+Creando bitacoras para Hora 8 /home/javier/mla/tmp/logs/hora8.tmp ..... OK
+Creando bitacoras para Hora 9 /home/javier/mla/tmp/logs/hora9.tmp ..... OK
+Creando bitacoras para Hora 10 /home/javier/mla/tmp/logs/hora10.tmp ..... OK
+Creando bitacoras para Hora 11 /home/javier/mla/tmp/logs/hora11.tmp ..... OK
+Creando bitacoras para Hora 12 /home/javier/mla/tmp/logs/hora12.tmp ..... OK
+Creando bitacoras para Hora 13 /home/javier/mla/tmp/logs/hora13.tmp ..... OK
+Creando bitacoras para Hora 14 /home/javier/mla/tmp/logs/hora14.tmp ..... OK
+Creando bitacoras para Hora 15 /home/javier/mla/tmp/logs/hora15.tmp ..... OK
+Creando bitacoras para Hora 16 /home/javier/mla/tmp/logs/hora16.tmp ..... OK
+Creando bitacoras para Hora 17 /home/javier/mla/tmp/logs/hora17.tmp ..... OK
+Creando bitacoras para Hora 18 /home/javier/mla/tmp/logs/hora18.tmp ..... OK
+Creando bitacoras para Hora 19 /home/javier/mla/tmp/logs/hora19.tmp ..... OK
+Creando bitacoras para Hora 20 /home/javier/mla/tmp/logs/hora20.tmp ..... OK
+Creando bitacoras para Hora 21 /home/javier/mla/tmp/logs/hora21.tmp ..... OK
+Creando bitacoras para Hora 22 /home/javier/mla/tmp/logs/hora22.tmp ..... OK
+Creando bitacoras para Hora 23 /home/javier/mla/tmp/logs/hora23.tmp ..... OK
+
+Ordenamiento teminado ..... OK
+
+Creando archivo /home/javier/mla/tmp/logs/hora_0'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_0'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_0'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_10'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_10'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_10'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_11'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_11'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_11'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_12'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_12'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_12'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_13'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_13'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_13'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_14'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_14'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_14'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_15'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_15'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_15'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_16'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_16'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_16'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_17'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_17'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_17'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_18'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_18'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_18'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_19'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_19'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_19'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_1'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_1'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_1'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_20'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_20'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_20'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_21'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_21'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_21'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_22'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_22'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_22'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_23'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_23'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_23'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_2'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_2'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_2'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_3'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_3'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_3'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_4'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_4'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_4'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_5'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_5'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_5'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_6'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_6'_'Jul'_'2.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_6'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_6'_'Jun'_'29.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_6'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_7'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_7'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_7'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_8'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_8'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_8'_'Jun'_'30.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_9'_'Jul'_'1.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_9'_'Jun'_'28.tmp
+Creando archivo /home/javier/mla/tmp/logs/hora_9'_'Jun'_'30.tmp
+
+Procesando bitacora /home/javier/mla/tmp/logs/hora_0_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_0_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_0_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_10_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_10_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_10_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_11_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_11_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_11_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_12_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_12_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_12_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_13_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_13_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_13_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_14_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_14_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_14_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_15_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_15_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_15_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_16_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_16_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_16_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_17_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_17_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_17_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_18_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_18_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_18_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_19_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_19_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_19_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_1_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_1_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_1_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_20_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_20_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_20_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_21_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_21_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_21_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_22_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_22_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_22_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_23_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_23_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_23_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_2_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_2_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_2_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_3_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_3_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_3_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_4_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_4_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_4_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_5_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_5_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_5_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_6_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_6_Jul_2.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_6_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_6_Jun_29.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_6_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_7_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_7_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_7_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_8_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_8_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_8_Jun_30.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_9_Jul_1.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_9_Jun_28.tmp ..... OK
+Procesando bitacora /home/javier/mla/tmp/logs/hora_9_Jun_30.tmp ..... OK
+Borrando archivos temporales ..... OK
+
+********************************************************************************************
+  Se han procesado las bitacoras. Archivo de salida: /home/javier/mla/datos/datos.txt
+********************************************************************************************
+

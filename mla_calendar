@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mla=`cat /tmp/mladirs.conf | grep "mla=" | awk 'BEGIN {FS="="} {print $2}'`
+freq=`cat /tmp/mladirs.conf | grep "freq=" | awk 'BEGIN {FS="="} {print $2}'`
+cat /tmp/mladirs.conf > $HOME/.mladirs.conf
+
+if [ $freq -eq 0 ]; then
+	echo "0 * * * * sh $mla/calendar $mla" > cron
+else
+	hora=`cat /tmp/mladirs.conf | grep "hora=" | awk 'BEGIN {FS="="} {print $2}'`
+	mins=`cat /tmp/mladirs.conf | grep "mins=" | awk 'BEGIN {FS="="} {print $2}'`
+	echo "$mins $hora * * * sh $mla/calendar $mla" > cron
+fi
+crontab cron
+rm cron
+rm /tmp/mladirs.conf
+rm /tmp/mladirs.conf.new

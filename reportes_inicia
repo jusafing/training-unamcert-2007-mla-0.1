@@ -1,0 +1,130 @@
+#!/bin/bash
+
+nombre_mes_fun ()
+{
+	case $1 in
+		1 ) 
+			mes_nom="Jan"
+			;;
+		01)
+			mes_nom="Jan"
+			;;
+		2 )
+                        mes_nom="Feb"
+                        ;;
+		02 )
+			mes_nom="Feb"
+			;;
+		3 )
+			mes_nom="Mar"
+                        ;;
+		03 )
+			mes_nom="Mar"
+			;;
+		4 )
+			mes_nom="Apr"
+                        ;;
+		04 )
+			mes_nom="Apr"
+			;;
+		5 )
+			mes_nom="May"
+                       	;;
+		05 )
+			mes_nom="May"
+			;;
+		6 )
+			mes_nom="Jun"
+                        ;;
+		06 )
+			mes_nom="Jun"
+			;;
+		7 )
+			mes_nom="Jul"
+                        ;;
+		07 )
+			mes_nom="Jul"
+			;;
+		8 )
+			mes_nom="Aug"
+                        ;;
+		08 )
+			mes_nom="Aug"
+			;;
+		9 )
+			mes_nom="Sep"
+			;;
+		09 )
+			mes_nom="Sep"
+			;;
+		10 )
+			mes_nom="Oct"
+			;;
+		11 )
+			mes_nom="Nov"
+			;;
+		12 )
+			mes_nom="Dec"
+			;;
+	esac
+	export nombre_mes=$mes_nom
+}
+
+dir_mla=$1
+dir_datos=`cat $dir_mla/mladirs.conf | grep "datos=" | awk 'BEGIN {FS="="} {print $2}' `
+dir_reportes=`cat $dir_mla/mladirs.conf | grep "reportes=" | awk 'BEGIN {FS="="} {print $2}' `
+archivo_datos="$dir_datos/datos.txt"
+mes_inicio=`expr $2 \/ 1`
+dia_inicio=`expr $3 \/ 1`
+mes_final=`expr $4 \/ 1`
+dia_final=`expr $5 \/ 1`
+archivo_salida=$dir_reportes/$6
+i=$mes_inicio
+j=$dia_inicio
+if [ -e $dir_mla/tmp/separado.tmp ]; then
+	echo -n "Borrando archivo antiguo ..... "
+	rm $dir_mla/tmp/separado.tmp
+	echo "OK"
+fi
+echo " "
+echo "******************************************************"
+echo "Preparando datos para Secuencia de dias en el reporte: "
+while [ $i -le $mes_final ]; do
+	nombre_mes_fun $i
+	echo "Mes: $nombre_mes"
+	if [ $i -eq $mes_final ]; then
+		while [ $j -le $dia_final ]; do
+			echo " - Dia: $j"
+			grep "$nombre_mes $j |" $archivo_datos >> $dir_mla/tmp/separado.tmp
+			j=`expr $j + 1`
+		done
+	else
+		if [ $i -eq 2 ]; then
+			md=28
+		elif [ $i -ne 4 ] && [ $i -ne 6 ] && [ $i -ne 9 ] && [ $i -ne 11 ]; then
+			md=31
+		else
+			md=30
+		fi
+		while [ $j -le $md ]; do
+			echo " - Dia: $j"
+			grep "$nombre_mes $j |" $archivo_datos >> $dir_mla/tmp/separado.tmp
+			j=`expr $j + 1`
+		done
+		j=1
+	fi
+	i=`expr $i + 1`
+done
+
+nombre_mes_fun $mes_inicio
+nmi=$nombre_mes
+nombre_mes_fun $mes_final
+nmf=$nombre_mes
+fi="$nmi/$dia_inicio"
+ff="$nmf/$dia_final"
+sh $dir_mla/reportes_mla $dir_mla $dir_mla/tmp/separado.tmp $archivo_salida $fi $ff
+rm $dir_mla/tmp/separado.tmp
+
+echo "***************************************************"
+echo "**  Proceso de Generacion de Reportes Terminado  **"
+echo "***************************************************"

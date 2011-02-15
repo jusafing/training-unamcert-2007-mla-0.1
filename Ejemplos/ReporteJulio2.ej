@@ -1,0 +1,215 @@
+**************************************************
+**  MAIL LOG ANALIZER - Generacion de Reportes  **
+**************************************************
+ 
+Fecha Inicio: Jul:2
+Fecha Final: Jul:2
+Archivo de salida: ReporteJulio2
+Borrando archivo antiguo ..... OK
+ 
+******************************************************
+Preparando datos para Secuencia de dias en el reporte: 
+Mes: Jul
+ - Dia: 2
+***************************************************
+Creando el Reporte de las bitacoras Procesadas ....
+ - Periodo Jul/2 -- Jul/2
+ - Archivo de salida : /home/javier/mla/reportes/ReporteJulio2
+--------------------------------------------------
+MAIL LOG ANALIZER V 1.0   -   REPORTE DE BITACORAS
+--------------------------------------------------
+ 
+PERIODO DE REPORTE :   Jul/2 -- Jul/2
+ 
+Fecha de creacion de Reporte: vie jul 13 11:11:53 CDT 2007
+ 
+1) Correos Recibidos                    .............. 610
+2) Correos analizados por el AntiVirus  .............. 510
+3) Correos con algun tipo de Malware    .............. 0
+4) Correos analizados por el ANTISPAM   .............. 566
+5) Correos Detectados como SPAM         .............. 371
+6) Promedio de Correos SPAM             .............. 5.70
+7) Promedio de Correos NO SPAM          .............. -1.35
+8) Total de Incidencias de Criterios de Correo SPAM
+ 
+	>>  HTML_10_20 ............ 8
+	>> HTML_10_20 ............ 2
+	>> HTML_SHORT_LINK_IMG_1 ............ 4
+	>> DATE_IN_PAST_96_XX ............ 11
+	>>  HTML_SHORT_LINK_IMG_1 ............ 4
+	>> DATE_IN_FUTURE_06_12 ............ 38
+	>> FUZZY_CPILL ............ 14
+	>> MIME_HEADER_CTYPE_ONLY ............ 2
+	>> HTML_30_40 ............ 28
+	>> FORWARD_LOOKING ............ 1
+	>> AWL ............ 34
+	>> SUBJECT_DRUG_GAP_C ............ 11
+	>> BAYES_80 ............ 11
+	>> DATE_IN_PAST_06_12 ............ 9
+	>> ADVANCE_FEE_1 ............ 1
+	>> REPTO_QUOTE_AOL ............ 1
+	>> HTML_MESSAGE ............ 293
+	>>  DATE_IN_PAST_96_XX ............ 1
+	>> BODY_ENHANCEMENT ............ 4
+	>> RCVD_DOUBLE_IP_LOOSE ............ 4
+	>> DATE_IN_FUTURE_48_96 ............ 1
+	>> BODY_ENHANCEMENT2 ............ 9
+	>> FUZZY_SOFTWARE ............ 2
+	>> PLING_QUERY ............ 2
+	>> HTML_70_80 ............ 44
+	>> MIME_HTML_ONLY ............ 49
+	>> MISSING_SUBJECT ............ 5
+	>> MSGID_YAHOO_CAPS ............ 1
+	>> HELO_DYNAMIC_SPLIT_IP ............ 1
+	>> BAYES_95 ............ 4
+	>> MSGID_SPAM_CAPS ............ 6
+	>> DRUGS_ANXIETY_EREC ............ 14
+	>> DRUGS_MANYKINDS ............ 14
+	>> RCVD_HELO_IP_MISMATCH ............ 20
+	>> DRUGS_ERECTILE_OBFU ............ 15
+	>> HELO_DYNAMIC_IPADDR ............ 13
+	>> MSGID_RANDY ............ 2
+	>> DRUGS_SLEEP_EREC ............ 14
+	>> UNPARSEABLE_RELAY ............ 20
+	>> DRUGS_DIET ............ 23
+	>> MIME_HTML_MOSTLY ............ 12
+	>> FORGED_MSGID_MSN ............ 1
+	>> DRUGS_ANXIETY_OBFU ............ 14
+	>> DRUGS_MUSCLE ............ 10
+	>> BAYES_99 ............ 32
+	>> FROM_HAS_ULINE_NUMS ............ 4
+	>> MAILTO_TO_SPAM_ADDR ............ 3
+	>> FUZZY_PHENT ............ 14
+	>> DRUGS_DIET_OBFU ............ 14
+	>> MISSING_HB_SEP ............ 2
+	>> HTML_TITLE_UNTITLED ............ 5
+	>> FORGED_MUA_THEBAT_BOUN ............ 2
+	>> FUZZY_VPILL ............ 14
+	>> INVALID_MSGID ............ 5
+	>> MSGID_SHORT ............ 2
+	>> SUBJ_DOLLARS ............ 3
+	>> UPPERCASE_50_75 ............ 1
+	>> STOCK_ALERT ............ 2
+	>> FORGED_HOTMAIL_RCVD2 ............ 2
+	>> FORGED_MUA_AOL_FROM ............ 3
+	>> UPPERCASE_75_100 ............ 4
+	>> DRUGS_SLEEP ............ 14
+	>> REPLICA_WATCH ............ 20
+	>> UNDISC_RECIPS ............ 6
+	>> FORGED_EUDORAMAIL_RCVD ............ 1
+	>> MIME_BOUND_DD_DIGITS ............ 5
+	>> MSGID_OUTLOOK_INVALID ............ 3
+	>> REPTO_QUOTE_YAHOO ............ 1
+	>> RCVD_ILLEGAL_IP ............ 4
+	>> FROM_ILLEGAL_CHARS ............ 6
+	>> HTML_FONT_LOW_CONTRAST ............ 1
+	>> HTML_MIME_NO_HTML_TAG ............ 1
+	>> SUBJECT_EXCESS_BASE64 ............ 6
+	>> MAILTO_SUBJ_REMOVE ............ 2
+	>> FORGED_HOTMAIL_RCVD ............ 1
+	>> FORGED_MUA_OUTLOOK ............ 4
+	>> HTML_00_10 ............ 4
+	>> FROM_LOCAL_NOVOWEL ............ 7
+	>> FROM_EXCESS_BASE64 ............ 6
+	>> ALL_NATURAL ............ 2
+	>> X_MAILER_SPAM ............ 1
+	>> MAILTO_TO_REMOVE ............ 2
+	>> FORGED_YAHOO_RCVD ............ 13
+	>> RCVD_DOUBLE_IP_SPAM ............ 8
+	>> DEAR_SOMETHING ............ 2
+	>> MORE_SEX ............ 1
+	>> HTML_20_30 ............ 31
+	>> GAPPY_SUBJECT ............ 6
+	>> SUBJECT_EXCESS_QP ............ 2
+	>> HTML_IMAGE_RATIO_06 ............ 1
+	>> HELO_DYNAMIC_HCC ............ 9
+	>> INVALID_TZ_GMT ............ 1
+	>> MPART_ALT_DIFF ............ 46
+	>> FAKE_OUTBLAZE_RCVD ............ 2
+	>> FUZZY_CREDIT ............ 1
+	>> HTML_SHOUTING4 ............ 1
+	>> HTML_SHOUTING3 ............ 7
+	>> DATE_IN_FUTURE_12_24 ............ 9
+	>> NO_OBLIGATION ............ 1
+	>> HELO_DYNAMIC_IPADDR2 ............ 9
+	>> HTML_40_50 ............ 30
+	>> HTML_IMAGE_RATIO_02 ............ 2
+	>> UNRESOLVED_TEMPLATE ............ 17
+	>> DATE_SPAMWARE_Y2K ............ 2
+	>> FUZZY_PRICES ............ 3
+	>> SUBJECT_FUZZY_MEDS ............ 3
+	>> DATE_IN_PAST_12_24 ............ 2
+	>> FORGED_OUTLOOK_HTML ............ 7
+	>> HTML_IMAGE_ONLY_28 ............ 14
+	>> MIME_HTML_ONLY_MULTI ............ 7
+	>> X_IP ............ 1
+	>> ONLINE_PHARMACY ............ 6
+	>> IMPOTENCE ............ 20
+	>> FORGED_THEBAT_HTML ............ 2
+	>> HTML_IMAGE_ONLY_08 ............ 35
+	>> MANY_EXCLAMATIONS ............ 7
+	>> SUBJECT_ENCODED_TWICE ............ 11
+	>> HTML_TAG_EXIST_TBODY ............ 2
+	>> DOMAIN_RATIO ............ 12
+	>> DATE_IN_FUTURE_03_06 ............ 15
+	>> MIME_QP_LONG_LINE ............ 69
+	>> HTML_IMAGE_ONLY_16 ............ 27
+	>> SUBJ_ALL_CAPS ............ 11
+	>> HTML_IMAGE_ONLY_24 ............ 4
+	>> SUBJ_ILLEGAL_CHARS ............ 9
+	>> EXTRA_MPART_TYPE ............ 93
+	>> DATE_IN_PAST_03_06 ............ 15
+	>> MPART_ALT_DIFF_COUNT ............ 6
+	>> BAYES_00 ............ 178
+	>> SUBJECT_FUZZY_VPILL ............ 1
+	>> HTML_IMAGE_ONLY_32 ............ 2
+	>> SUBJ_HAS_UNIQ_ID ............ 14
+	>> DATE_IN_FUTURE_24_48 ............ 5
+	>> FORGED_OUTLOOK_TAGS ............ 1
+	>> HTML_IMAGE_ONLY_04 ............ 2
+	>> HTML_IMAGE_ONLY_12 ............ 27
+	>> FUZZY_AMBIEN ............ 21
+	>> DRUGS_ANXIETY ............ 14
+	>> MIME_BOUND_NEXTPART ............ 1
+	>> MISSING_MIMEOLE ............ 8
+	>> MSGID_SPAM_LETTERS ............ 4
+	>> FUZZY_VLIUM ............ 14
+	>> INFO_TLD ............ 25
+	>> SUBJECT_FUZZY_PENIS ............ 1
+	>> BANG_GUAR ............ 1
+	>> DIET_1 ............ 3
+	>> BAYES_05 ............ 10
+	>> FORGED_AOL_TAGS ............ 1
+	>> DRUG_ED_ONLINE ............ 15
+	>> EMPTY_MESSAGE ............ 2
+	>> BAYES_20 ............ 29
+	>> RCVD_NUMERIC_HELO ............ 42
+	>> HTML_OBFUSCATE_20_30 ............ 1
+	>> HELO_DYNAMIC_DHCP ............ 4
+	>> HTML_TAG_BALANCE_BODY ............ 3
+	>> HTML_90_100 ............ 16
+	>> DRUG_DOSAGE ............ 5
+	>> URI_NOVOWEL ............ 1
+	>> SUB_HELLO ............ 2
+	>> BILL_1618 ............ 1
+	>> BAYES_40 ............ 15
+	>> FORGED_MSGID_YAHOO ............ 1
+	>> DRUG_ED_SILD ............ 1
+	>> INVALID_DATE ............ 5
+	>> SUBJ_BUY ............ 1
+	>> JOIN_MILLIONS ............ 1
+	>> BAYES_50 ............ 80
+	>> BAD_ENC_HEADER ............ 11
+	>> SUBJECT_DRUG_GAP_L ............ 1
+	>> UNCLOSED_BRACKET ............ 1
+	>> UPPERCASE_25_50 ............ 8
+	>> DRUGS_ERECTILE ............ 74
+	>> HTML_TEXT_AFTER_HTML ............ 6
+	>> BAYES_60 ............ 12
+	>> DRUG_ED_CAPS ............ 14
+	>> HTML_SHORT_LINK_IMG_2 ............ 25
+	>> HELO_DYNAMIC_DIALIN ............ 1
+	>> DATE_IN_FUTURE_96_XX ............ 3
+***************************************************
+**  Proceso de Generacion de Reportes Terminado  **
+***************************************************

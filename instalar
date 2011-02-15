@@ -1,0 +1,360 @@
+#!/bin/bash
+
+copia ()
+{
+	dir_mla=$1
+	cp * $dir_mla
+	echo " **** Copiando mla_calendar a $dir_mla ..... OK"
+	echo " **** Copiando mla a $dir_mla ..... OK"
+	echo " **** Copiando criterios_busca.csh a $dir_mla ..... OK"
+	echo " **** Copiando criterios_cuenta.awk a $dir_mla ..... OK"
+        echo " **** Copiando criterios_ordena.awk a $dir_mla ..... OK"
+	echo " **** Copiando hits_busca.csh a $dir_mla ..... OK"
+	echo " **** Copiando hits_promedio_SI.awk a $dir_mla ..... OK"
+	echo " **** Copiando hits_promedio_NO.awk a $dir_mla ..... OK"
+	echo " **** Copiando logs_ordena.csh a $dir_mla ..... OK"
+	echo " **** Copiando inicia a $dir_mla ..... OK"
+	mkdir $dir_mla/tmp
+	mkdir $dir_mla/tmp/logs
+	mkdir $dir_mla/Ejemplos
+	echo -n " **** Copiando archivos de ejemplos de salida ..... "
+	cp Ejemplos/* $dir_mla/Ejemplos
+	echo "OK"
+	echo -n " **** Copiando archivos de bitacoras ....."
+	dir_logs=`cat $dir_mla/mladirs.conf | grep "logs=" | awk 'BEGIN {FS="="} {print $2}' `
+	cp logs/* $dir_logs
+	echo "OK"
+}
+
+verifica_permisos ()
+{
+	if [ -d $1 ] && [ -e $1 ]; then
+		case $2 in
+			1 )
+				if [ -r $1 ] && [ -w $1 ]; then
+					echo "Permisos de Lectura ($1) ..... OK"
+					echo "Permisos de Escritura ($1) ..... OK"
+					echo "#DIRECTORIO DE BITACORAS" > /tmp/mladirs.conf
+					echo "logs=$1" >> /tmp/mladirs.conf
+				else
+					echo "Permisos de Lectura ($1) ..... FALLO"
+					echo " "
+					echo " "
+					echo -n "1.- Ingrese directorio de ubicacion de las BITACORAS (Default: ~/mla/logs): "
+					read bitacoras_dir
+					default $bitacoras_dir 1
+				fi
+				;;
+			2)
+				if [ -r $1 ] && [ -w $1 ]; then
+					echo "Permisos de Lectura   ($1) ..... OK"
+					echo "Permisos de Escritura ($1) ..... OK"
+					echo "#DIRECTORIO DE REPORTES" >> /tmp/mladirs.conf
+					echo "reportes=$1" >> /tmp/mladirs.conf
+				else
+					echo "Permisos de Lectura/Escritura ..... FALLO"
+					echo " "
+					echo " "
+					echo -n "2.- Indique el directorio de almacenamiento de REPORTES (Default: ~/mla/reportes): "
+					read reportes_dir
+					default $reportes_dir 2
+				fi
+				;;
+			3)
+				if [ -r $1 ] && [ -w $1 ]; then
+					echo "Permisos de Lectura   ($1) ..... OK"
+					echo "Permisos de Escritura ($1) ..... OK"
+					echo "#DIRECTORIO DE DATOS" >> /tmp/mladirs.conf
+					echo "datos=$1" >> /tmp/mladirs.conf
+				else
+					echo "Permisos de Lectura/Escritura ..... FALLO"
+					echo " "
+					echo " "
+					echo -n "3.- Indique el directorio de datos (Default: ~/mla/datos): "
+					read datos_dir
+					default $datos_dir 3
+				fi
+			;;
+			4)
+				if [ -r $1 ] && [ -w $1 ]; then
+					echo "Permisos de Lectura   ($1) ..... OK"
+					echo "Permisos de Escritura ($1) ..... OK"
+					echo "*****************************************************************************"
+					echo "  Se ha escrito el archivo de configuracion $1/mladir.conf "
+					echo "*****************************************************************************"
+					echo "#DIRECTORIO DE INSTALACION" >> /tmp/mladirs.conf
+					echo "mla=$1" >> /tmp/mladirs.conf
+					cp /tmp/mladirs.conf $1/
+					echo "$1/mladirs.conf" > /tmp/mladirs.conf.new
+					copia $1
+				else
+					echo "Permisos de Lectura/Escritura ..... FALLO"
+					echo " "
+					echo " "
+					echo -n "4.- Indique el directorio de instalacion de la herramienta (Default: ~/mla): "
+					read mla_dir
+					default $mla_dir 4
+				fi
+			;;
+		esac					
+	else
+
+		ban=1
+		while [ $ban == 1 ]; do
+			echo -n "El directorio $1 no existe desea crearlo posterior a la Instalacion [S/n] ? : "
+			read crear_opcion
+			case $crear_opcion in
+				S )
+					echo "Verificando ubicacion del directorio ($1)  .... OK"
+					mkdir -p $1
+					if [ -e $1  ]; then
+						echo "Permisos del directorio ($1) ..... OK"
+						rmdir $1
+						case $2 in
+						1 )
+							echo -n "Se toma el directorio ($1)"
+							mkdir -p $1
+							echo "#DIRECTORIO DE BITACORAS" > /tmp/mladirs.conf
+							echo "logs=$1" >> /tmp/mladirs.conf
+							;;
+						2 )
+							echo -n "Se toma el directorio ($1)"
+							mkdir -p $1
+							echo "#DIRECTORIO DE REPORTES" >> /tmp/mladirs.conf
+							echo "reportes=$1" >> /tmp/mladirs.conf
+							;;
+						3 )
+							echo -n "Se toma el directorio ($1)"
+							mkdir -p $1
+							echo "#DIRECTORIO DE DATOS" >> /tmp/mladirs.conf
+							echo "datos=$1" >> /tmp/mladirs.conf
+							;;
+						4 )
+							echo -n "Se toma el directorio ($1)"
+							mkdir -p $1
+							echo "**************************************************************************"
+							echo "  Se ha escrito el archivo de configuracion $1/mldirs.conf"
+							echo "**************************************************************************"
+							echo "#DIRECTORIO DE INSTALACION" >> /tmp/mladirs.conf
+							echo "mla=$1" >> /tmp/mladirs.conf	
+							cp /tmp/mladirs.conf $1/
+							echo "$1/mladirs.conf" > /tmp/mladirs.conf.new
+							copia $1
+							;;
+						esac
+					else
+						echo "Permisos del directorio ($1) ..... FALLO"
+						case $2 in
+						1 )
+							echo -n "1.- Ingrese directorio de ubicacion de las BITACORAS (Default: ~/mla/logs): "
+							read bitacoras_dir
+							default $bitacoras_dir 1
+							;;
+						2 )
+							echo -n "2.- Indique el directorio de almacenamiento de REPORTES (Default: ~/mla/reportes): "
+							read reportes_dir
+							default $reportes_dir 2
+							;;
+						3 )
+							echo -n "3.- Indique el directorio de DATOS (Default: ~/mla/datos): "
+							read datos_dir
+							default $datos_dir 3
+							;;
+						4 )
+							echo -n "4.- Indique el directorio de INSTALACION (Default: ~/mla): "
+							read mla_dir
+							default $mla_dir 4
+							;;
+						esac
+					fi
+					ban=0
+					;;
+				n )
+					case $2 in
+					1 )
+						echo -n "Se toma el directorio (Default: ~/mla/logs)"
+						mkdir -p $HOME/mla/logs
+						echo "#DIRECTORIO DE BITACORAS" > /tmp/mladirs.conf
+						echo "logs=$HOME/mla/logs" >> /tmp/mladirs.conf
+						;;
+					2 )
+						echo -n "Se toma el directorio (Default: ~/mla/reportes)"
+						mkdir -p $HOME/mla/reportes
+						echo "#DIRECTORIO DE REPORTES" >> /tmp/mladirs.conf
+						echo "reportes=$HOME/mla/reportes" >> /tmp/mladirs.conf
+						;;
+					3 )
+						echo -n "Se toma el directorio (Default: ~/mla/datos)"
+						mkdir -p $HOME/mla/datos
+						echo "#DIRECTORIO DE DATOS" >> /tmp/mladirs.conf
+						echo "datos=$HOME/mla/datos" >> /tmp/mladirs.conf
+						;;
+					4 )
+						echo -n "Se toma el directorio (Default: ~/mla)"
+						mkdir -p $HOME/mla
+						echo " "
+						echo " "
+						echo "*****************************************************************"
+						echo "** Se ha escrito el archivo de configuracion $HOME/mla/mladir.conf **"
+						echo "*****************************************************************"
+						echo "#DIRECTORIO DE INSTALACION" >> /tmp/mladirs.conf
+						echo "mla=$HOME/mla" >> /tmp/mladirs.conf
+						cp /tmp/mladirs.conf $HOME/mla/
+						echo "$HOME/mla/mladirs.conf" > /tmp/mladirs.conf.new
+						copia $HOME/mla
+						;;
+					esac
+					ban=0
+					;;
+				* )
+					echo "Opcion no valida"
+					ban=1
+					;;
+			esac
+		done
+	fi
+}
+
+default () 
+{
+	if [ $# == 1 ]; then
+		case $1 in
+		1 )
+			verifica_permisos "$HOME/mla/logs" 1
+			;;
+		2 )
+			verifica_permisos "$HOME/mla/reportes" 2
+			;;
+		3 )
+			verifica_permisos "$HOME/mla/datos" 3
+			;;
+		4 )
+			verifica_permisos "$HOME/mla" 4
+			;;
+		esac
+	else
+		case $2 in
+		1 )	
+			verifica_permisos $1 1
+			;;
+		2 )
+			verifica_permisos $1 2
+			;;
+		3 )
+			verifica_permisos $1 3
+			;;
+		4 )
+			verifica_permisos $1 4
+			;;
+		esac
+	fi
+}
+
+frecuencia ()
+{
+	ban=1
+	while [ $ban == 1 ]; do
+		echo " "
+		echo " "
+		echo "5.- Indica la FRECUENCIA DE EJECUCION de la herramienta"
+		echo "    h) Cada HORA"
+		echo "    d) Diariamente a una hora determinada"
+		echo " "
+		echo -n "     > "
+		read freq
+		mladir=`cat /tmp/mladirs.conf.new`
+		case $freq in
+			h )
+				echo "     La herramienta se ejecutara cada hora exacta ..... OK"
+				echo "#FRECUENCIA DE EJECUCION DE LA HERRAMIENTA" >> $mladir
+				echo "freq=0" >> $mladir
+				echo "#FRECUENCIA DE EJECUCION DE LA HERRAMIENTA" >> /tmp/mladirs.conf
+                                echo "freq=0" >> /tmp/mladirs.conf
+
+				ban=0
+				;;
+			d )
+				echo "     Indique la hora de ejecucion de la herramienta (Default 12:00)"
+				echo -n "     (hh:mm) : "
+				read hora_c
+				hora=`echo "$hora_c" | awk 'BEGIN{FS=":"} {print $1}'`
+				mins=`echo "$hora_c" | awk 'BEGIN{FS=":"} {print $2}'`
+				if [ -z $hora ]; then
+					echo " "
+					echo "     La hora de ejecucion sera: 12:00 hrs (Default) ..... OK"
+					hora=12
+					mins=00
+					echo "#FRECUENCIA DE EJECUCION DE LA HERRAMIENTA" >> $mladir
+					echo "freq=1" >> $mladir
+					echo "hora=$hora" >> $mladir
+					echo "mins=$mins" >> $mladir
+					echo "#FRECUENCIA DE EJECUCION DE LA HERRAMIENTA" >> /tmp/mladirs.conf
+                                        echo "freq=1" >> /tmp/mladirs.conf
+                                        echo "hora=$hora" >> /tmp/mladirs.conf
+	                                echo "mins=$mins" >> /tmp/mladirs.conf
+					ban=0
+				else
+					if [ $hora -ge 0 ] && [ $hora -le 24 ] && [ $mins -ge 0 ] && [ $mins -lt 60 ]; then
+					      	echo "     Verificando formato de Hora ..... OK"
+						echo "     La hora de ejecucion sera: $hora hrs $mins mins ..... OK"
+						echo "#FRECUENCIA DE EJECUCION DE LA HERRAMIENTA" >> $mladir
+						echo "freq=1" >> $mladir
+						echo "hora=$hora" >> $mladir
+						echo "mins=$mins" >> $mladir
+						echo "#FRECUENCIA DE EJECUCION DE LA HERRAMIENTA" >> /tmp/mladirs.conf
+	                                        echo "freq=1" >> /tmp/mladirs.conf
+		                                echo "hora=$hora" >> /tmp/mladirs.conf
+		                                echo "mins=$mins" >> /tmp/mladirs.conf
+						ban=0
+					else
+						echo "     Verificando formato de Hora ..... FALLO"
+						echo "     ERROR al ingresar el formato de hora"
+						ban=1
+					fi
+				fi
+				;;
+			* )
+				echo "Opcion no valida"
+				ban=1
+				;;
+		esac
+	done
+}
+
+echo " "
+echo " "
+echo "*******************************************************"
+echo "*    ANALIZADOR DE BITACORAS DE CORREO ELECTRONICO    *"
+echo "*                        M L A                        *"
+echo "*******************************************************"
+echo " "
+echo " "
+echo "-----------------------------------------"
+echo " OPCIONES DE CONFIGURACION E INSTALACION"
+echo " "
+echo " "
+echo -n "1.- Indica el Directorio de ubicacion de las BITACORAS (Default: ~/mla/logs):  "
+read bitacoras_dir
+default $bitacoras_dir 1
+echo " "
+echo " "
+echo -n "2.- Indica el directorio de almacenamiento de REPORTES (Default: ~/mla/reportes): "
+read reportes_dir
+default $reportes_dir 2
+echo " "
+echo " "
+echo -n "3.- Indica el directorio de DATOS (Default: ~/mla/datos): "
+read datos_dir
+default $datos_dir 3
+echo " "
+echo " "
+echo -n "4.- Indica el directorio de INSTALACION (Default: ~/mla): "
+read mla_dir
+default $mla_dir 4
+frecuencia 1
+echo " "
+echo " "
+echo "*****************************************************************************"
+echo "****      SE HA COMPLETADO EL PROCESO DE CONFIGURACION CORRECTAMENTE     ****"
+echo "*****************************************************************************"
+sh mla_calendar

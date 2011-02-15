@@ -1,0 +1,58 @@
+#!/bin/csh
+
+if( $argv[2] != 1 ) then
+        echo " "
+        echo "ERROR: Fuente de Ejecucion no valida"
+        echo "Intente ./load -p "
+        echo " "
+	exit
+endif
+
+set dir_mla=$1
+set dir_logs = `cat $dir_mla/mladirs.conf | grep "logs=" | awk 'BEGIN {FS="="} {print $2}' `
+set dir_datos = `cat $dir_mla/mladirs.conf | grep "datos=" | awk 'BEGIN {FS="="} {print $2}' `
+
+echo "Iniciando el proceso ....."
+echo "Inicio ejecucion: `date`" >> $dir_datos/out.log
+
+echo "Iniciando el Ordenamiento de bitacoras ..... "
+csh $dir_mla/logs_ordena.csh $dir_mla
+echo " "
+echo "Ordenamiento teminado ..... OK"
+echo " "
+foreach archivo (`ls $dir_mla/tmp/logs/*.tmp`)
+	set archivo_nombre = `echo "$archivo" | awk 'BEGIN{FS="/"} {print $NF}'`
+	set numero = `echo "$archivo_nombre" | awk 'BEGIN{FS="_"} {print $2}' | awk 'BEGIN{FS="."} {print $1}'`
+	cat $archivo | awk '{print $1"-"$2}' | sort | uniq > $dir_mla/tmp/archivo
+	foreach dia (`cat $dir_mla/tmp/archivo`)
+		set mes_bit = `echo $dia | awk 'BEGIN{FS="-"} {print $1}'`
+		set dia_bit = `echo $dia | awk 'BEGIN{FS="-"} {print $2}'`
+		echo "Creando archivo $dir_mla/tmp/logs/hora_$numero'_'$mes_bit'_'$dia_bit.tmp"
+		grep "$mes_bit.*$dia_bit..........correo" $archivo > $dir_mla/tmp/logs/hora_$numero'_'$mes_bit'_'$dia_bit.tmp
+	end
+	rm $archivo
+end
+echo " "
+foreach archivo (`ls $dir_mla/tmp/logs/*.tmp`)
+	set archivo_nombre = `echo "$archivo" | awk 'BEGIN{FS="/"} {print $NF}'`
+	set num_fec = `echo "$archivo_nombre" | awk 'BEGIN{FS="."} {print $1}' | awk 'BEGIN{FS="_"} {print $2"_"$3"_"$4}'`
+	sh $dir_mla/mla $dir_mla $archivo $num_fec
+end
+
+foreach archivo (`ls $dir_mla/tmp/logs/*.out`)
+        cat $archivo >> $dir_mla/tmp/logs/out.txt
+end
+
+cat $dir_mla/tmp/logs/out.txt | sort -M > $dir_datos/datos.txt
+
+echo -n "Borrando archivos temporales ..... "
+rm $dir_mla/tmp/logs/*
+rm $dir_mla/tmp/*.log
+rm $dir_mla/tmp/archivo
+echo "OK"
+
+echo " "
+echo "********************************************************************************************"
+echo "  Se han procesado las bitacoras. Archivo de salida: $dir_datos/datos.txt  "
+echo "********************************************************************************************"
+echo "Termino ejecucion: `date`" >> $dir_datos/out.log

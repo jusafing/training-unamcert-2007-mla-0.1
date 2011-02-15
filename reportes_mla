@@ -1,0 +1,33 @@
+#!/bin/bash
+
+dir_mla=$1
+archivo_datos=$2
+archivo_salida=$3
+fecha_inicio=$4
+fecha_termino=$5
+
+echo "***************************************************"
+echo "Creando el Reporte de las bitacoras Procesadas ...."
+echo " - Periodo $fecha_inicio -- $fecha_termino"
+echo " - Archivo de salida : $archivo_salida"
+echo "--------------------------------------------------" > $archivo_salida
+echo "MAIL LOG ANALIZER V 1.0   -   REPORTE DE BITACORAS" >> $archivo_salida
+echo "--------------------------------------------------" >> $archivo_salida
+echo " " >> $archivo_salida
+echo "PERIODO DE REPORTE :   $fecha_inicio -- $fecha_termino" >> $archivo_salida
+echo " " >> $archivo_salida
+echo "Fecha de creacion de Reporte: `date`" >> $archivo_salida
+echo " " >> $archivo_salida
+echo "1) Correos Recibidos                    .............. `awk 'BEGIN{FS="|"} {print $3}' $archivo_datos | awk -f $dir_mla/reportes_suma.awk`" >> $archivo_salida
+echo "2) Correos analizados por el AntiVirus  .............. `awk 'BEGIN{FS="|"} {print $4}' $archivo_datos | awk -f $dir_mla/reportes_suma.awk`" >> $archivo_salida
+echo "3) Correos con algun tipo de Malware    .............. `awk 'BEGIN{FS="|"} {print $5}' $archivo_datos | awk -f $dir_mla/reportes_suma.awk`" >> $archivo_salida
+echo "4) Correos analizados por el ANTISPAM   .............. `awk 'BEGIN{FS="|"} {print $7}' $archivo_datos | awk -f $dir_mla/reportes_suma.awk`" >> $archivo_salida
+echo "5) Correos Detectados como SPAM         .............. `awk 'BEGIN{FS="|"} {print $8}' $archivo_datos | awk -f $dir_mla/reportes_suma.awk`" >> $archivo_salida
+echo "6) Promedio de Correos SPAM             .............. `awk 'BEGIN{FS="|"} {print $9}' $archivo_datos | awk -f $dir_mla/reportes_promedio.awk`" >> $archivo_salida
+echo "7) Promedio de Correos NO SPAM          .............. `awk 'BEGIN{FS="|"} {print $10}' $archivo_datos | awk -f $dir_mla/reportes_promedio.awk`" >> $archivo_salida
+echo "8) Total de Incidencias de Criterios de Correo SPAM" >> $archivo_salida
+echo " " >> $archivo_salida
+echo "`awk 'BEGIN{FS="|"}{print $11}' $archivo_datos | awk -f $dir_mla/reportes_ord_spam.awk | awk -f $dir_mla/reportes_cuenta_spam.awk`" >> $archivo_salida
+
+more $archivo_salida
+

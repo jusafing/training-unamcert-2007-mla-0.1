@@ -1,0 +1,25 @@
+#!/bin/bash
+
+dir_mla=$1
+hora=`echo "$3" | awk 'BEGIN{FS="_"} {print $1}'`
+mes=`echo "$3" | awk 'BEGIN{FS="_"} {print $2}'`
+dia=`echo "$3" | awk 'BEGIN{FS="_"} {print $3}'`
+
+echo -n "Procesando bitacora $2 ..... "
+
+datos="$mes $dia | "
+datos=$datos"$hora:00 | "
+csumx=`grep postfix/smtp $2 | grep status=sent | grep "@seguridad.unam.mx" |  wc -l`
+sumx=`grep postfix/smtp $2 | grep status=sent | grep "@correo.seguridad.unam.mx" |  wc -l`
+numcenv=`expr $csumx + $sumx`
+datos=$datos"Correos Recibidos:$numcenv | "
+datos=$datos"Correos Analizados por AV:`grep run_av $2 | awk '{print $6}' | uniq | wc -l` | "
+datos=$datos"Correos con Malware:`grep run_av $2 | grep INFECTED | awk '{print $6 $8 $9}' | wc -l` | "
+datos=$datos"`grep run_av $2 | grep INFECTED | awk '{print $9}' | awk -f $dir_mla/criterios_cuenta.awk` | "
+datos=$datos"Correos Analizados ANTISPAM:`grep SPAM $2 | awk '{print $6}' | uniq | wc -l` | "
+datos=$datos"Correos SPAM:`grep SPAM $2 | grep Yes | awk '{print $6}' | uniq | wc -l` | "
+datos=$datos"`csh $dir_mla/hits_busca.csh $2 Yes $dir_mla` | "
+datos=$datos"`csh $dir_mla/hits_busca.csh $2 No $dir_mla` |"
+datos=$datos"`csh $dir_mla/criterios_busca.csh $2 $dir_mla`"
+echo "$datos"> $dir_mla/tmp/logs/hora_$3.out
+echo "OK"

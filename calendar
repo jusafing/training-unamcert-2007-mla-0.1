@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sh $1/load -p
+sh $1/load -r -o Reporte_programado.dat
